@@ -55,7 +55,8 @@ class AbstractPMUser(BaseModel, AbstractUser):
     recommendation = models.TextField(blank=True, null=True)
     extra_info = models.TextField(blank=True, null=True)
 
-    # GitHub OAuth fields
+    # GitHub OAuth fields are optional, but serializers and generated user
+    # migrations expect the attributes to exist on the concrete user model.
     github_id = models.CharField(max_length=50, null=True, blank=True, unique=True)
     github_username = models.CharField(max_length=100, null=True, blank=True)
     github_access_token = models.TextField(null=True, blank=True)
